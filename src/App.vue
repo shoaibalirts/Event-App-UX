@@ -1,8 +1,8 @@
 <script setup></script>
 
 <template>
-  <h1>Event App</h1>
-  <p class="bg-blue-500">Hello</p>
+  <h1 class="text-4xl">All events</h1>
+  <section class="grid grid-cols-1 md:grid-cols-3"></section>
 </template>
 
 <style scoped></style>
