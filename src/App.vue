@@ -51,9 +51,11 @@ export default {
 </script>
 
 <template>
-  <h1 class="text-4xl">All events</h1>
-  <section class="grid grid-cols-1 md:grid-cols-3">
-    <event-card v-for="event in events" :key="event.id" :eventData="event"></event-card>
+  <section class="m-10 lg:m-14">
+    <h1 class="text-4xl">All events</h1>
+    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20">
+      <event-card v-for="event in events" :key="event.id" :eventData="event"></event-card>
+    </section>
   </section>
 </template>
 
