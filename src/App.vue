@@ -41,6 +41,30 @@ export default {
           description:
             "The Chess Club is back for a new semester, and all students are invited to join our first meeting. Whether you’re a beginner eager to learn or an experienced player ready for a challenge, this is a great opportunity to meet other chess enthusiasts, play a few friendly matches, and discuss plans for upcoming events and tournaments. Come and be part of a community that enjoys strategy, fun, and friendly competition.",
         },
+        {
+          id: 4,
+          eventName: "Movie night",
+          location: "Building D (common area), Zealand Erhvervsakademi, Roskilde",
+          date: "13-10-2025",
+          time: "16:30",
+          image:
+            "https://plus.unsplash.com/premium_photo-1661393612464-2304f6232a2e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fG1vdmllJTIwbmlnaHR8ZW58MHx8MHx8fDA%3D",
+          imageAlt: "Two women on a couch, laughing, holding popcorn and tv remote.",
+          description:
+            "Take a break from studying and join us for a relaxed evening at our student movie night. Enjoy a great film, good company, and a cozy atmosphere. It’s the perfect chance to unwind, meet other students, and share some popcorn while watching something fun together. Everyone is welcome, so bring your friends and come enjoy the show.",
+        },
+        {
+          id: 5,
+          eventName: "English stand-up comedy",
+          location: "Building D (common area), Zealand Erhvervsakademi, Roskilde",
+          date: "02-11-2025",
+          time: "17:30",
+          image:
+            "https://images.unsplash.com/photo-1611956425642-d5a8169abd63?q=80&w=1211&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          imageAlt: "One man standing on a scene, smiling and telling something to the audience.",
+          description:
+            "Get ready for an evening full of laughter and good vibes at our English Stand-Up Comedy Night. Students are invited to enjoy a lineup of hilarious performances delivered in English, featuring both experienced comedians and talented newcomers. It’s a great way to relax and share a fun night with fellow students. Come join us for comedy, conversation, and a lot of laughs.",
+        },
       ],
     };
   },
