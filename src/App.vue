@@ -1,5 +1,7 @@
 <script>
+import EventCard from "./components/EventCard.vue";
 export default {
+  components: { EventCard },
   data() {
     return {
       events: [
@@ -50,7 +52,9 @@ export default {
 
 <template>
   <h1 class="text-4xl">All events</h1>
-  <section class="grid grid-cols-1 md:grid-cols-3"></section>
+  <section class="grid grid-cols-1 md:grid-cols-3">
+    <event-card v-for="event in events" :key="event.id" :eventData="event"></event-card>
+  </section>
 </template>
 
 <style scoped></style>
