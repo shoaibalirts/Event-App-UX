@@ -21,7 +21,7 @@
     @custom-event-form="formHandler"
     @custom-event-form-saved="formSubmitHandler"
   />
-  <event-details v-if="eventId !== null" />
+  <event-details v-if="eventId !== null" :event="selectedEvent" />
 </template>
 
 <script>
@@ -127,6 +127,11 @@ export default {
     detailsHandler(id) {
       this.eventId = id;
       this.activateListing = false;
+    },
+  },
+  computed: {
+    selectedEvent() {
+      return this.events.find((event) => event.id === this.eventId);
     },
   },
 };
