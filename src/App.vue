@@ -109,6 +109,7 @@ export default {
     menuHandler(isOpenMenu) {
       this.activateListing = !isOpenMenu;
       this.isOpenedForm = false;
+      this.eventId = null;
     },
     crossHandler(isOpenCross) {
       this.activateListing = isOpenCross;
@@ -117,6 +118,7 @@ export default {
       console.log("clicked in App");
       this.isOpenedForm = true;
       this.activateListing = false;
+      this.eventId = null;
     },
     formSubmitHandler(newEvent) {
       console.log(newEvent);
