@@ -1,7 +1,21 @@
+<template>
+  <the-navigation @custom-event-open-menu="menuHandler" @custom-event-cross-menu="crossHandler" />
+  <section v-if="activateListing">
+    <h1 class="text-4xl">All events</h1>
+    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20">
+      <event-card v-for="event in events" :key="event.id" :eventData="event"></event-card>
+    </section>
+  </section>
+</template>
+
 <script>
 import EventCard from "./components/EventCard.vue";
+import TheNavigation from "./components/TheNavigation.vue";
 export default {
-  components: { EventCard },
+  components: {
+    EventCard,
+    TheNavigation,
+  },
   data() {
     return {
       events: [
@@ -66,21 +80,22 @@ export default {
             "Get ready for an evening full of laughter and good vibes at our English Stand-Up Comedy Night. Students are invited to enjoy a lineup of hilarious performances delivered in English, featuring both experienced comedians and talented newcomers. It’s a great way to relax and share a fun night with fellow students. Come join us for comedy, conversation, and a lot of laughs.",
         },
       ],
+      // activateMenu: true,
+      activateListing: true,
     };
+  },
+  methods: {
+    menuHandler(isOpenMenu) {
+      this.activateListing = !isOpenMenu;
+    },
+    crossHandler(isOpenCross) {
+      this.activateListing = isOpenCross;
+    },
   },
   provide() {
     return { events: this.events };
   },
 };
 </script>
-
-<template>
-  <section class="m-10 lg:m-14">
-    <h1 class="text-4xl">All events</h1>
-    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20">
-      <event-card v-for="event in events" :key="event.id" :eventData="event"></event-card>
-    </section>
-  </section>
-</template>
 
 <style scoped></style>
