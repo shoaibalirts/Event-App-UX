@@ -8,7 +8,12 @@
   <section v-if="activateListing">
     <h1 class="text-4xl">All events</h1>
     <section class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20">
-      <event-card v-for="event in events" :key="event.id" :eventData="event"></event-card>
+      <event-card
+        v-for="event in events"
+        :key="event.id"
+        :eventData="event"
+        @custom-event-open-details="detailsHandler"
+      ></event-card>
     </section>
   </section>
   <event-registration-form
@@ -16,10 +21,12 @@
     @custom-event-form="formHandler"
     @custom-event-form-saved="formSubmitHandler"
   />
+  <event-details v-if="eventId !== null" />
 </template>
 
 <script>
 import EventCard from "./components/EventCard.vue";
+import EventDetails from "./components/EventDetails.vue";
 import EventRegistrationForm from "./components/EventRegistrationForm.vue";
 import TheNavigation from "./components/TheNavigation.vue";
 export default {
@@ -27,6 +34,7 @@ export default {
     EventCard,
     TheNavigation,
     EventRegistrationForm,
+    EventDetails,
   },
   data() {
     return {
@@ -94,6 +102,7 @@ export default {
       ],
       activateListing: true,
       isOpenedForm: false,
+      eventId: null,
     };
   },
   methods: {
@@ -115,9 +124,10 @@ export default {
       this.events.push(newEvent);
       // this.closeForm();
     },
+    detailsHandler(id) {
+      this.eventId = id;
+      this.activateListing = false;
+    },
   },
-  // provide() {
-  //   return { events: this.events };
-  // },
 };
 </script>
