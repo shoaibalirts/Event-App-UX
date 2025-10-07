@@ -1,12 +1,21 @@
 <template>
-  <the-navigation @custom-event-open-menu="menuHandler" @custom-event-cross-menu="crossHandler" />
+  <the-navigation
+    @custom-event-open-menu="menuHandler"
+    @custom-event-cross-menu="crossHandler"
+    @custom-event-form="formHandler"
+    @custom-event-form-saved="formSubmitHandler"
+  />
   <section v-if="activateListing">
     <h1 class="text-4xl">All events</h1>
     <section class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20">
       <event-card v-for="event in events" :key="event.id" :eventData="event"></event-card>
     </section>
   </section>
-  <event-registration-form />
+  <event-registration-form
+    v-if="isOpenedForm"
+    @custom-event-form="formHandler"
+    @custom-event-form-saved="formSubmitHandler"
+  />
 </template>
 
 <script>
@@ -83,22 +92,32 @@ export default {
             "Get ready for an evening full of laughter and good vibes at our English Stand-Up Comedy Night. Students are invited to enjoy a lineup of hilarious performances delivered in English, featuring both experienced comedians and talented newcomers. It’s a great way to relax and share a fun night with fellow students. Come join us for comedy, conversation, and a lot of laughs.",
         },
       ],
-      // activateMenu: true,
       activateListing: true,
+      isOpenedForm: false,
     };
   },
   methods: {
     menuHandler(isOpenMenu) {
       this.activateListing = !isOpenMenu;
+      this.isOpenedForm = false;
     },
     crossHandler(isOpenCross) {
       this.activateListing = isOpenCross;
     },
+    formHandler() {
+      console.log("clicked in App");
+      this.isOpenedForm = true;
+      this.activateListing = false;
+    },
+    formSubmitHandler(newEvent) {
+      console.log(newEvent);
+
+      this.events.push(newEvent);
+      // this.closeForm();
+    },
   },
-  provide() {
-    return { events: this.events };
-  },
+  // provide() {
+  //   return { events: this.events };
+  // },
 };
 </script>
-
-<style scoped></style>

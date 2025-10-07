@@ -1,13 +1,17 @@
 <template>
-  <header class="h-24 min-h-0 md:min-h-full">
+  <header>
     <nav>
       <menu-icon v-if="isOpenedMenu" @click="openMenuClickHandler" />
 
       <cross-icon v-if="isOpenedCross" @click="closeMenuClickHandler" />
       <ul v-if="isOpenedCross">
-        <li>Home</li>
-        <li>My Events</li>
-        <button @click="openFormHandler">add an event</button>
+        <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-2">Home</li>
+        <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-4">My Events</li>
+        <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-2">
+          <button class="text-gray-400 hover:text-blue-500" @click="openFormHandler">
+            + add an event
+          </button>
+        </li>
       </ul>
     </nav>
   </header>
@@ -26,7 +30,6 @@ export default {
     return {
       isOpenedMenu: true,
       isOpenedCross: false,
-      isListing: false,
     };
   },
   methods: {
@@ -41,8 +44,17 @@ export default {
       this.isOpenedCross = false;
     },
     openFormHandler() {
+      console.log("clicked in navigation");
+      if (this.isOpenedMenu) {
+        console.log("Menu is opened");
+      } else {
+        console.log("Menu is closed");
+      }
+
+      this.$emit("custom-event-form");
       this.isOpenedMenu = true;
       this.isOpenedCross = false;
+      // this.$emit("custom-event-cross-menu", true);
     },
   },
 };
