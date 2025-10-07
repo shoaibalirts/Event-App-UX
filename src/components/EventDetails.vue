@@ -10,6 +10,13 @@
         ><span>Location: {{ event.location }}</span>
       </p>
       <p>{{ event.description }}</p>
+
+      <button
+        @click="handleToggleIsSignedUp"
+        class="bg-blue-400 hover:cursor-pointer px-2 py-1 rounded-full"
+      >
+        {{ actionText }}
+      </button>
     </section>
   </section>
 </template>
@@ -17,5 +24,20 @@
 <script>
 export default {
   props: ["event"],
+  data() {
+    return {
+      isSignedUp: false,
+    };
+  },
+  methods: {
+    handleToggleIsSignedUp() {
+      this.isSignedUp = !this.isSignedUp;
+    },
+  },
+  computed: {
+    actionText() {
+      return this.isSignedUp ? "Resign from this event" : "Sign up to the event";
+    },
+  },
 };
 </script>
