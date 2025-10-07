@@ -7,7 +7,7 @@
       <ul v-if="isOpenedCross">
         <li>Home</li>
         <li>My Events</li>
-        <button class="bg-grey-500">add an event</button>
+        <button @click="openFormHandler">add an event</button>
       </ul>
     </nav>
   </header>
@@ -36,9 +36,11 @@ export default {
       this.isOpenedCross = true;
     },
     closeMenuClickHandler() {
-      console.log("clicked");
       this.$emit("custom-event-cross-menu", this.isOpenedCross);
-
+      this.isOpenedMenu = true;
+      this.isOpenedCross = false;
+    },
+    openFormHandler() {
       this.isOpenedMenu = true;
       this.isOpenedCross = false;
     },

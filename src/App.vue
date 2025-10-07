@@ -6,15 +6,18 @@
       <event-card v-for="event in events" :key="event.id" :eventData="event"></event-card>
     </section>
   </section>
+  <event-registration-form />
 </template>
 
 <script>
 import EventCard from "./components/EventCard.vue";
+import EventRegistrationForm from "./components/EventRegistrationForm.vue";
 import TheNavigation from "./components/TheNavigation.vue";
 export default {
   components: {
     EventCard,
     TheNavigation,
+    EventRegistrationForm,
   },
   data() {
     return {
