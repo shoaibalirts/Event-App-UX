@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="block md:hidden">
     <nav>
       <menu-icon v-if="isOpenedMenu" @click="openMenuClickHandler" />
 

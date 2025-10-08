@@ -5,6 +5,7 @@
     @custom-event-form="formHandler"
     @custom-event-form-saved="formSubmitHandler"
   />
+  <desktop-navigation />
 
   <section v-if="activateListing">
     <h1 class="text-4xl">All events</h1>
@@ -26,6 +27,7 @@
 </template>
 
 <script>
+import DesktopNavigation from "./components/DesktopNavigation.vue";
 import EventCard from "./components/EventCard.vue";
 import EventDetails from "./components/EventDetails.vue";
 import EventRegistrationForm from "./components/EventRegistrationForm.vue";
@@ -36,6 +38,7 @@ export default {
     TheNavigation,
     EventRegistrationForm,
     EventDetails,
+    DesktopNavigation,
   },
   data() {
     return {
