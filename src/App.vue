@@ -113,7 +113,7 @@ export default {
       console.log(newEvent);
 
       this.events.push(newEvent);
-      // this.closeForm();
+      console.log(this.events);
     },
   },
   // provide() {
