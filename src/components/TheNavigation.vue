@@ -1,18 +1,43 @@
 <template>
-  <header class="block md:hidden">
+  <header>
     <nav>
-      <menu-icon v-if="isOpenedMenu" @click="openMenuClickHandler" />
+      <section class="block md:hidden">
+        <menu-icon v-if="isOpenedMenu" @click="openMenuClickHandler" />
 
-      <cross-icon v-if="isOpenedCross" @click="closeMenuClickHandler" />
-      <ul v-if="isOpenedCross">
-        <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-2">Home</li>
-        <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-4">My Events</li>
-        <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-2">
-          <button class="text-gray-400 hover:text-blue-500" @click="openFormHandler">
-            + add an event
-          </button>
-        </li>
-      </ul>
+        <cross-icon v-if="isOpenedCross" @click="closeMenuClickHandler" />
+        <ul v-if="isOpenedCross">
+          <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-2">Home</li>
+          <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-4">
+            My Events
+          </li>
+          <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-2">
+            <button class="text-gray-400 hover:text-blue-500" @click="openFormHandler">
+              + add an event
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="hidden md:block">
+        <ul class="flex justify-between mx-10 lg:mx-20">
+          <li>
+            <ul class="flex gap-6">
+              <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-2 text-xl">
+                Home
+              </li>
+              <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-4 text-xl">
+                My Events
+              </li>
+            </ul>
+          </li>
+
+          <li class="p-2 hover:text-blue-500 hover:underline hover:underline-offset-2">
+            <button class="text-gray-400 hover:text-blue-500 text-xl" @click="openFormHandler">
+              + add an event
+            </button>
+          </li>
+        </ul>
+      </section>
     </nav>
   </header>
 </template>
