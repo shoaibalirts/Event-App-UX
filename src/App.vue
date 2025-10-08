@@ -9,7 +9,12 @@
   <section v-if="activateListing">
     <h1 class="text-4xl">All events</h1>
     <section class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20">
-      <event-card v-for="event in events" :key="event.id" :eventData="event"></event-card>
+      <event-card
+        v-for="event in events"
+        :key="event.id"
+        :eventData="event"
+        @custom-event-open-details="detailsHandler"
+      ></event-card>
     </section>
   </section>
   <event-registration-form
@@ -17,10 +22,12 @@
     @custom-event-form="formHandler"
     @custom-event-form-saved="formSubmitHandler"
   />
+  <event-details v-if="eventId !== null" :event="selectedEvent" />
 </template>
 
 <script>
 import EventCard from "./components/EventCard.vue";
+import EventDetails from "./components/EventDetails.vue";
 import EventRegistrationForm from "./components/EventRegistrationForm.vue";
 import TheNavigation from "./components/TheNavigation.vue";
 export default {
@@ -28,6 +35,7 @@ export default {
     EventCard,
     TheNavigation,
     EventRegistrationForm,
+    EventDetails,
   },
   data() {
     return {
@@ -95,12 +103,14 @@ export default {
       ],
       activateListing: true,
       isOpenedForm: false,
+      eventId: null,
     };
   },
   methods: {
     menuHandler(isOpenMenu) {
       this.activateListing = !isOpenMenu;
       this.isOpenedForm = false;
+      this.eventId = null;
     },
     crossHandler(isOpenCross) {
       this.activateListing = isOpenCross;
@@ -109,6 +119,7 @@ export default {
       console.log("clicked in App");
       this.isOpenedForm = true;
       this.activateListing = false;
+      this.eventId = null;
     },
     formSubmitHandler(newEvent) {
       console.log(newEvent);
@@ -116,9 +127,15 @@ export default {
       this.events.push(newEvent);
       console.log(this.events);
     },
+    detailsHandler(id) {
+      this.eventId = id;
+      this.activateListing = false;
+    },
   },
-  // provide() {
-  //   return { events: this.events };
-  // },
+  computed: {
+    selectedEvent() {
+      return this.events.find((event) => event.id === this.eventId);
+    },
+  },
 };
 </script>
