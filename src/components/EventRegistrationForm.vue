@@ -14,7 +14,7 @@
       <p class="flex flex-col justify-center">
         <label>Event description</label>
         <textarea
-          v-model="formData.eventDescription"
+          v-model="formData.description"
           minlength="5"
           placeholder="description of the event please"
         />
@@ -24,7 +24,7 @@
         <input
           type="file"
           @change="imageUploadHandler"
-          name="eventImage"
+          name="image"
           accept="image/png, image/jpeg"
         />
       </p>
@@ -41,8 +41,8 @@ export default {
     return {
       formData: {
         eventName: "",
-        eventDescription: "",
-        eventImage: null,
+        description: "",
+        image: null,
       },
     };
   },
@@ -61,13 +61,19 @@ export default {
 
       this.$emit("custom-event-form-saved", createdEvent);
       this.formData.eventName = "";
-      this.formData.eventDescription = "";
-      this.formData.eventImage = "";
+      this.formData.description = "";
+      this.formData.image = "";
     },
     imageUploadHandler(event) {
       const file = event.target.files[0];
+      if (!file) {
+        return;
+      }
+      console.log("File selected:", file.name);
+      const imageUrl = URL.createObjectURL(file);
+      this.formData.image = imageUrl;
 
-      this.formData.eventImage = file;
+      // this.formData.eventImage = file;
     },
   },
 };
