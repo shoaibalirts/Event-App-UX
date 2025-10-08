@@ -1,6 +1,6 @@
 <template>
   <section
-    class="grid grid-flow-row justify-items-center lg:grid-rows-1 lg:grid-cols-2 gap-6 mx-10 lg:mx-20"
+    class="mt-10 grid grid-flow-row justify-items-center lg:grid-rows-1 lg:grid-cols-2 gap-6 mx-10 lg:mx-20"
   >
     <img :src="event.image" :alt="event.imageAlt" class="rounded-lg" />
     <section class="flex flex-col gap-4">
